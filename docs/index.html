@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jensenbox - AI Content Factory</title>
+  <meta name="description" content="Jensenbox is a local-first AI content factory for turning trend signals into scripts, visuals, distribution plans, and reusable brand growth assets.">
+  <meta property="og:title" content="Jensenbox - AI Content Factory">
+  <meta property="og:description" content="Local-first AI content factory for brand growth, scripts, creative assets, distribution planning, and GEO assets.">
+  <meta property="og:image" content="assets/jensenbox-preview.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07111d;
+      --panel: #0d1b2b;
+      --panel-2: #11243a;
+      --text: #edf7ff;
+      --muted: #9eb5cb;
+      --line: rgba(148, 190, 224, .2);
+      --blue: #37b7ff;
+      --cyan: #53f0ff;
+      --green: #5af3a1;
+      --yellow: #f8cb63;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at 12% 6%, rgba(55, 183, 255, .24), transparent 28rem),
+        radial-gradient(circle at 88% 0%, rgba(90, 243, 161, .14), transparent 24rem),
+        linear-gradient(135deg, #06101b, #0a1524 56%, #08111e);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: .2px;
+    }
+
+    .logo {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(83, 240, 255, .45);
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(55, 183, 255, .32), rgba(90, 243, 161, .18));
+      box-shadow: 0 18px 50px rgba(55, 183, 255, .2);
+      font-weight: 950;
+    }
+
+    .nav-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .06);
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .button.primary {
+      border-color: rgba(55, 183, 255, .75);
+      background: linear-gradient(135deg, #28aaff, #52e0ff);
+      color: #04101c;
+      box-shadow: 0 22px 70px rgba(55, 183, 255, .26);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 34px;
+      align-items: center;
+      padding: 54px 0 42px;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 16px 0 18px;
+      max-width: 780px;
+      font-size: clamp(48px, 8vw, 94px);
+      line-height: .94;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .lead {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 22px);
+      overflow-wrap: anywhere;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .05);
+      padding: 16px;
+    }
+
+    .stat strong { display: block; font-size: 26px; line-height: 1.1; }
+    .stat span { display: block; color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+    .preview {
+      overflow: hidden;
+      border: 1px solid rgba(83, 240, 255, .25);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow: 0 30px 120px rgba(0, 0, 0, .38);
+    }
+
+    .preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .section { padding: 52px 0; }
+    .section h2 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 48px); line-height: 1.05; }
+    .section > .wrap > p { max-width: 760px; margin: 0 0 24px; color: var(--muted); font-size: 18px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(13, 27, 43, .8);
+      padding: 22px;
+    }
+
+    .card b {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      color: var(--green);
+      font-size: 15px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .card h3 { margin: 10px 0 8px; font-size: 22px; line-height: 1.18; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .step {
+      min-height: 92px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(255,255,255,.045);
+      font-weight: 850;
+    }
+
+    .step span { display: block; color: var(--yellow); font-size: 13px; margin-bottom: 8px; }
+
+    .terminal {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #050b12;
+      padding: 20px;
+      color: #dff7ff;
+      font: 15px/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .share {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid rgba(83, 240, 255, .3);
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(55, 183, 255, .14), rgba(90, 243, 161, .08));
+      padding: 22px;
+    }
+
+    .share p { margin: 0; color: var(--muted); }
+    .share strong { display: block; margin-bottom: 4px; font-size: 22px; color: var(--text); }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 28px 0 42px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 28px; }
+      .grid { grid-template-columns: 1fr 1fr; }
+      .flow { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .nav { align-items: flex-start; flex-direction: column; }
+      .nav-actions { justify-content: flex-start; width: 100%; }
+      .stats, .grid, .flow, .share { grid-template-columns: 1fr; }
+      .button { width: 100%; }
+      h1 { font-size: 40px; line-height: 1; }
+      .lead { max-width: 100%; font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap nav">
+    <a class="brand" href="https://github.com/jensenyi/Jensenbox">
+      <span class="logo">J</span>
+      <span>Jensenbox</span>
+    </a>
+    <nav class="nav-actions" aria-label="Primary">
+      <a class="button" href="https://github.com/jensenyi/Jensenbox/releases/tag/v0.1.0">v0.1.0</a>
+      <a class="button primary" href="https://github.com/jensenyi/Jensenbox">View on GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <div class="eyebrow">Local-first AI Content Factory</div>
+        <h1>Turn trends into growth assets.</h1>
+        <p class="lead">Jensenbox is a local-first operating system for brand operators and solo builders. It connects trend signals, topic judgment, script production, creative assets, distribution planning, and GEO asset building.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://github.com/jensenyi/Jensenbox">Star the project</a>
+          <a class="button" href="#quick-start">Run locally</a>
+        </div>
+        <div class="stats" aria-label="Project highlights">
+          <div class="stat"><strong>7</strong><span>production modules</span></div>
+          <div class="stat"><strong>Local</strong><span>no hosted backend required</span></div>
+          <div class="stat"><strong>MIT</strong><span>open-source license</span></div>
+        </div>
+      </div>
+      <figure class="preview">
+        <img src="assets/jensenbox-preview.png" alt="Jensenbox creative workshop preview">
+      </figure>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>Built for practical content operations.</h2>
+        <p>Jensenbox is not a generic AI text generator. It is designed around the real workflow of turning noisy public signals into publishable content and reusable brand assets.</p>
+        <div class="grid">
+          <article class="card">
+            <b>Research</b>
+            <h3>Trend and topic signals</h3>
+            <p>Collect brand, platform, consumer, AI search, and community signals, then turn them into topic opportunities.</p>
+          </article>
+          <article class="card">
+            <b>Production</b>
+            <h3>Script workshop</h3>
+            <p>Generate platform-ready scripts, hooks, titles, cover directions, comment prompts, and GEO/FAQ drafts.</p>
+          </article>
+          <article class="card">
+            <b>Creative</b>
+            <h3>Image and video assets</h3>
+            <p>Create visual assets locally, preview finished outputs, add them to distribution, and save them into the asset library.</p>
+          </article>
+          <article class="card">
+            <b>Community</b>
+            <h3>Creative signal board</h3>
+            <p>Turn public Chinese-language discussion signals into content ideas, script drafts, and creative workshop prompts.</p>
+          </article>
+          <article class="card">
+            <b>Distribution</b>
+            <h3>Multi-platform planning</h3>
+            <p>Prepare platform variants before publishing. Publishing stays human-approved and account-safe.</p>
+          </article>
+          <article class="card">
+            <b>Assets</b>
+            <h3>Growth asset library</h3>
+            <p>Keep useful scripts, prompts, cases, FAQ, GEO material, and review notes reusable instead of buried in chat history.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>The workflow.</h2>
+        <p>Start from public signals, end with reusable assets. Each step is explicit enough for a solo creator and structured enough for a small team.</p>
+        <div class="flow">
+          <div class="step"><span>01</span>Public signals</div>
+          <div class="step"><span>02</span>Opportunity judgment</div>
+          <div class="step"><span>03</span>Topic selection</div>
+          <div class="step"><span>04</span>Script workshop</div>
+          <div class="step"><span>05</span>Creative workshop</div>
+          <div class="step"><span>06</span>Distribution queue</div>
+          <div class="step"><span>07</span>Asset library</div>
+          <div class="step"><span>08</span>Review and reuse</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quick-start">
+      <div class="wrap">
+        <h2>Run locally.</h2>
+        <p>The first release is a Windows local-first MVP. No hosted backend is required.</p>
+        <pre class="terminal"><code>git clone https://github.com/jensenyi/Jensenbox.git
+cd Jensenbox
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\server.ps1
+
+# Open:
+# http://127.0.0.1:4175/</code></pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap share">
+        <div>
+          <strong>Want to support it?</strong>
+          <p>Star the repository on GitHub, share the link, or fork it and build your own content growth workflow.</p>
+        </div>
+        <a class="button primary" href="https://github.com/jensenyi/Jensenbox">Open GitHub repo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Jensenbox is open-source under the MIT License. Built for local-first brand growth and content production.</div>
+  </footer>
+</body>
+</html>
