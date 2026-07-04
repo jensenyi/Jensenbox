@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ContentFactoryHandoff",
+  "type": "object",
+  "required": [
+    "batchId",
+    "fromModule",
+    "toModule",
+    "pipelineStep",
+    "productionPreset",
+    "objective",
+    "confirmedTopics",
+    "audience",
+    "platformTargets",
+    "sourceEvidence",
+    "contentRequirements",
+    "generatedContent",
+    "riskItems",
+    "approvals",
+    "unresolvedQuestions",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "batchId": { "type": "string" },
+    "fromModule": { "type": "string" },
+    "toModule": { "type": "string" },
+    "pipelineStep": { "type": "string" },
+    "productionPreset": { "type": "string" },
+    "objective": { "type": "string" },
+    "confirmedTopics": { "type": "array" },
+    "audience": { "type": "object" },
+    "platformTargets": { "type": "array" },
+    "sourceEvidence": { "type": "array" },
+    "contentRequirements": { "type": "array" },
+    "generatedContent": { "type": "array" },
+    "riskItems": { "type": "array" },
+    "approvals": { "type": "array" },
+    "unresolvedQuestions": { "type": "array" },
+    "createdAt": { "type": "string" },
+    "updatedAt": { "type": "string" }
+  }
+}

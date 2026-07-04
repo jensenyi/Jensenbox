@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dachuan Growth OS Run Manifest",
+  "type": "object",
+  "required": ["run_id", "run_date", "status", "created_at", "human_gates", "artifacts"],
+  "properties": {
+    "run_id": { "type": "string", "pattern": "^RUN-[0-9]{8}$" },
+    "run_date": { "type": "string", "format": "date" },
+    "status": {
+      "enum": ["CREATED", "INPUT_READY", "RESEARCHED", "IDEATED", "SELECTED", "SCRIPTED", "VISUALIZED", "REVISION_REQUIRED", "QA_PASSED", "REJECTED", "GEO_ASSETIZED", "READY_TO_PUBLISH", "PUBLISHED", "REVIEWED", "ARCHIVED"]
+    },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "human_gates": {
+      "type": "object",
+      "required": ["idea_selection", "publish_approval", "performance_data"],
+      "properties": {
+        "idea_selection": { "type": "boolean" },
+        "publish_approval": { "type": "boolean" },
+        "performance_data": { "type": "boolean" }
+      }
+    },
+    "artifacts": { "type": "object" },
+    "errors": { "type": "array", "items": { "type": "string" } }
+  }
+}

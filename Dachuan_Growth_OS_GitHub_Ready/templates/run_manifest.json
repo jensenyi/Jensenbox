@@ -1,0 +1,26 @@
+{
+  "run_id": "{{RUN_ID}}",
+  "run_date": "{{RUN_DATE}}",
+  "status": "CREATED",
+  "created_at": "{{CREATED_AT}}",
+  "updated_at": "{{CREATED_AT}}",
+  "human_gates": {
+    "idea_selection": false,
+    "publish_approval": false,
+    "performance_data": false
+  },
+  "artifacts": {
+    "input": "00_input.md",
+    "research": null,
+    "competitor": null,
+    "ideas": null,
+    "selected_ideas": null,
+    "scripts": [],
+    "visuals": [],
+    "quality_report": null,
+    "geo_assets": [],
+    "publish_plan": null,
+    "review": null
+  },
+  "errors": []
+}

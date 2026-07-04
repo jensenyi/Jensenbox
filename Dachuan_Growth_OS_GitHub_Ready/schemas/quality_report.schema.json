@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Quality Report",
+  "type": "object",
+  "required": ["run_id", "evaluations"],
+  "properties": {
+    "run_id": { "type": "string" },
+    "evaluations": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["content_id", "scores", "total", "vetoes", "verdict", "required_changes", "rewrite_attempt"],
+        "properties": {
+          "content_id": { "type": "string" },
+          "scores": {
+            "type": "object",
+            "required": ["viewpoint", "business_value", "viral_potential", "persona_fit", "actionability", "platform_fit", "asset_value"]
+          },
+          "total": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "vetoes": { "type": "array" },
+          "verdict": { "enum": ["READY", "MINOR_REVISION", "MAJOR_REWRITE", "REJECTED"] },
+          "required_changes": { "type": "array" },
+          "rewrite_attempt": { "type": "integer", "minimum": 0, "maximum": 2 }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "system_name": "Dachuan Growth OS",
+  "version": "0.7.0-open-source-ready",
+  "storage_root": ".",
+  "default_language": "zh-CN",
+  "timezone": "Asia/Shanghai",
+  "mvp": {
+    "trend_inputs": 3,
+    "competitor_inputs": 3,
+    "brand_case_inputs": 1,
+    "research_opportunities": 10,
+    "ideas_generated": 20,
+    "ideas_shortlisted": 10,
+    "contents_produced": 3,
+    "visual_plans": 3,
+    "minimum_geo_assets": 1,
+    "max_rewrite_attempts": 2
+  },
+  "quality_thresholds": {
+    "ready": 90,
+    "minor_revision": 80,
+    "major_rewrite": 70,
+    "reject_below": 70
+  },
+  "external_actions": {
+    "automatic_source_fetching": false,
+    "automatic_platform_posting": false,
+    "automatic_scheduled_runs": false,
+    "human_publish_approval_required": true
+  },
+  "ui": {
+    "enabled": true,
+    "url": "http://127.0.0.1:4175/",
+    "state_file": "data\\ui-state.js",
+    "draft_storage": "browser_localStorage",
+    "external_model_connected": false,
+    "model_label": "Local demo",
+    "model_name": "local"
+  },
+  "fresh_content_schedule": {
+    "enabled": false,
+    "timezone": "Asia/Shanghai",
+    "cronExpression": "0 8 * * *",
+    "sourceGroups": [
+      "brand",
+      "consumer",
+      "platform",
+      "geo",
+      "ai"
+    ],
+    "maxItemsPerRun": 100,
+    "freshnessWindowHours": 72,
+    "retryLimit": 2
+  },
+  "module_threads": {
+    "control_center": "local-demo",
+    "research_and_ideas": "local-demo",
+    "content_and_visual": "local-demo",
+    "quality_and_geo": "local-demo"
+  },
+  "token_efficiency": {
+    "mode": "lean_context_on_demand",
+    "default_context_pack": "docs\\core_context_pack.md",
+    "protocol": "docs\\token_efficiency_protocol.md",
+    "raw_knowledge_default_load": false,
+    "unchanged_files_reread": false,
+    "maximum_rewrite_rounds": 2,
+    "idle_status_checks": false,
+    "module_handoffs_use_file_references": true,
+    "preserve_reasoning_quality": true
+  }
+}

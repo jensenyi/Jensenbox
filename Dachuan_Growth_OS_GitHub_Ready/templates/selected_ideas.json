@@ -1,0 +1,10 @@
+{
+  "run_id": "{{RUN_ID}}",
+  "approved_by": "Dachuan or ranked MVP selection",
+  "approved_at": null,
+  "selected": [
+    { "idea_id": "", "content_id": "DC-{{DATE_COMPACT}}-001", "primary_platform": "", "selection_reason": "" },
+    { "idea_id": "", "content_id": "DC-{{DATE_COMPACT}}-002", "primary_platform": "", "selection_reason": "" },
+    { "idea_id": "", "content_id": "DC-{{DATE_COMPACT}}-003", "primary_platform": "", "selection_reason": "" }
+  ]
+}
