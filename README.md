@@ -103,6 +103,8 @@ By default, the creative workshop can use local HTML poster rendering without ex
 app.js                 Frontend app logic
 styles.css             UI styling
 index.html             Static app shell
+CONTEXT.md             Shared product language and state definitions
+DESIGN.md              Jensenbox UI rules and module design constraints
 tools/server.ps1       Local server and creative generation endpoints
 scripts/               Optional refresh and maintenance scripts
 data/ui-state.js       Safe demo state for the frontend
